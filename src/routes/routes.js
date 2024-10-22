@@ -5,12 +5,14 @@ const { authenticateToken } = require('../middlewares/auth');
 
 const router = express.Router();
 
-// User routes
 router.post('/users/register', userController.registerUser);
 router.post('/users/login', userController.loginUser);
-router.get('/users/:id', authenticateToken, userController.getUserDetails);
+router.get('/users', authenticateToken, userController.getAllUsers); 
+router.get('/users/:id', authenticateToken, userController.getUserById); 
 
-// Expense routes
 router.post('/expenses', authenticateToken, expenseController.addExpense);
+router.get('/expenses/balance-sheet', authenticateToken, expenseController.downloadBalanceSheet);
+router.get('/expenses/user/:id', authenticateToken, expenseController.getUserExpenses); 
+router.get('/expenses', authenticateToken, expenseController.getAllExpenses);
 
 module.exports = router;

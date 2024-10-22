@@ -46,3 +46,6 @@ temp/
 # Testing output
 jest/
 coverage/
+
+# Downloads folder
+downloads/
